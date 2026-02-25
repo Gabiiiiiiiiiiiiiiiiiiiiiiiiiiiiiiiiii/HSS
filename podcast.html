@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendu HSS - Gabriel Sabot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABLES DE COULEURS --- */
+        :root {
+            --rf-black: #111111;
+            --rf-white: #ffffff;
+            --rf-gray-bg: #f4f4f4;
+            --rf-gray-text: #555555;
+            --rf-gray-border: #e0e0e0;
+            --inter-red: #E2001A; /* Rouge France Inter (à changer si tu veux la couleur de ton école) */
+        }
+
+        /* --- RESET BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--rf-gray-bg); color: var(--rf-black); line-height: 1.6; }
+
+        /* --- HEADER (En-tête) --- */
+        .site-header { background-color: var(--rf-white); border-bottom: 1px solid var(--rf-gray-border); position: sticky; top: 0; z-index: 100; }
+        .header-top { display: flex; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--rf-gray-border); }
+        .logo-rf { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+        .stations-nav { display: flex; gap: 20px; padding: 10px 5%; font-size: 0.9rem; font-weight: 600; overflow-x: auto; white-space: nowrap; }
+        .stations-nav .active { color: var(--inter-red); border-bottom: 2px solid var(--inter-red); padding-bottom: 8px; }
+        .stations-nav span { color: var(--rf-gray-text); cursor: pointer; }
+
+        /* --- CONTENEUR PRINCIPAL --- */
+        .main-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        /* --- SECTION EPISODE (Héros) --- */
+        .episode-hero { background-color: var(--rf-white); border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        @media (min-width: 768px) { .episode-hero { flex-direction: row; } }
+        .episode-cover { flex: 0 0 300px; }
+        .episode-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .episode-details { padding: 30px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .show-title { color: var(--inter-red); font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+        .episode-date { color: var(--rf-gray-text); font-size: 0.9rem; margin-bottom: 15px; }
+        .episode-title { font-size: 2.2rem; font-weight: 800; line-height: 1.1; margin-bottom: 25px; letter-spacing: -1px; }
+
+        /* --- LECTEUR AUDIO (CSS AMÉLIORÉ) --- */
+        .audio-player-container {
+            /* Fond blanc au lieu de gris */
+            background-color: var(--rf-white);
+            /* Ajout d'une bordure fine */
+            border: 2px solid var(--rf-gray-border);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-top: auto; /* Pousse le lecteur vers le bas */
+            /* Petite ombre pour le faire ressortir */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            /* Transition douce pour l'effet de survol */
+            transition: all 0.3s ease;
+        }
+
+        /* Effet quand on passe la souris sur le lecteur */
+        .audio-player-container:hover {
+            border-color: var(--inter-red);
+            box-shadow: 0 4px 15px rgba(226, 0, 26, 0.15);
+        }
+
+        audio {
+            width: 100%;
+            height: 36px; /* Hauteur légèrement réduite pour un look plus fin */
+            outline: none;
+        }
+
+        /* --- SECTION CONTENU (Description) --- */
+        .episode-content { background-color: var(--rf-white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .episode-content h2 { font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--rf-gray-border); }
+        .episode-content p { margin-bottom: 15px; font-size: 1.1rem; color: #333; }
+        .tags { margin-top: 30px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag { background-color: var(--rf-gray-bg); color: var(--rf-black); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-top">
+            <div class="logo-rf">RADIO TELECOM</div>
+        </div>
+        <nav class="stations-nav">
+            <span class="active">Télécom Inter</span>
+            <span>Télécom Info</span>
+            <span>Télécom Bleu</span>
+            <span>Télécom Culture</span>
+            <span>Télécom Musique</span>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        
+        <section class="episode-hero">
+            <div class="episode-cover">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Étagère de pains en boulangerie">
+            </div>
+            
+            <div class="episode-details">
+                <div class="show-title">Documentaire HSS</div>
+                <div class="episode-date">Émission du mercredi 25 février</div>
+                
+                <h1 class="episode-title">Derrière le fournil, des artisans dans le pétrin</h1>
+                
+                <div class="audio-player-container">
+                    <audio controls>
+                        <source src="FINAL.mp4" type="audio/mp4">
+                        Votre navigateur ne supporte pas la lecture audio.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <section class="episode-content">
+            <h2>À propos de cet épisode</h2>
+            
+            <p><strong>Enquête et réalisation :</strong> Gabriel Sabot</p>
+            
+            <p>On a tous en tête l'image du boulanger heureux, sortant ses baguettes fumantes du four au petit matin. C'est le symbole de la France, notre fierté nationale. Mais derrière cette image rassurante se cache une réalité bien plus sombre et douloureuse. Dans ce documentaire audio, Gabriel Sabot nous emmène dans le sud de la France, pour comprendre le mal qui ronge la profession.</p>
+            
+            <p>Explosion des factures d'électricité, hausse brutale du prix des matières premières, effondrement de la consommation quotidienne de pain. Le métier de boulanger est devenu un véritable combat pour la survie. Face à des chaînes agroalimentaires qui standardisent les produits et vident le pain de son goût, nos artisans tombent un à un, dans l'indifférence quasi générale.</p>
+            
+            
+            <div class="tags">
+                <span class="tag">Société</span>
+                <span class="tag">Économie</span>
+                <span class="tag">Artisanat</span>
+                <span class="tag">Boulangerie</span>
+                <span class="tag">Documentaire HSS</span>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
